@@ -149,7 +149,6 @@ void arch_crash_save_vmcoreinfo(void);
 __printf(1, 2)
 void vmcoreinfo_append_str(const char *fmt, ...);
 unsigned long paddr_vmcoreinfo_note(void);
-
 #ifdef CONFIG_KEXEC_HARDBOOT
 /* FIXME: Hack: memory reservation should be done properly - see kexec.c */
 bool arch_kexec_is_hardboot_buffer_range(unsigned long start,
@@ -186,7 +185,7 @@ extern struct kimage *kexec_crash_image;
 #endif
 
 /* List of defined/legal kexec flags */
-if defined(CONFIG_KEXEC_JUMP) && defined(CONFIG_KEXEC_HARDBOOT)
+#if defined(CONFIG_KEXEC_JUMP) && defined(CONFIG_KEXEC_HARDBOOT)
 #define KEXEC_FLAGS    (KEXEC_ON_CRASH | KEXEC_PRESERVE_CONTEXT | KEXEC_HARDBOOT)
 #elif defined(CONFIG_KEXEC_JUMP)
 #define KEXEC_FLAGS    (KEXEC_ON_CRASH | KEXEC_PRESERVE_CONTEXT)
@@ -231,4 +230,4 @@ struct task_struct;
 static inline void crash_kexec(struct pt_regs *regs) { }
 static inline int kexec_should_crash(struct task_struct *p) { return 0; }
 #endif /* CONFIG_KEXEC */
-#endif /* LINUX_KEXEC_H */
+#endif /* LINUX_KEXEC_H */ 
