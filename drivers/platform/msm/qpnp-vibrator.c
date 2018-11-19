@@ -21,6 +21,7 @@
 #include <linux/spmi.h>
 #include <linux/qpnp/pwm.h>
 #include <linux/err.h>
+#include <linux/qpnp/vibrator.h>
 #include "../../staging/android/timed_output.h"
 
 #define QPNP_VIB_VTG_CTL(base)		(base + 0x41)
@@ -516,6 +517,13 @@ error_create_min:
 error_create_level:
 	timed_output_dev_unregister(&vib->timed_dev);
 	return rc;
+}
+
+void vibrate(int strength)
+{
+        struct qpnp_vib *vib;
+
+        qpnp_vib_enable(&vib->timed_dev, strength);
 }
 
 static int qpnp_vibrator_remove(struct spmi_device *spmi)

@@ -38,6 +38,7 @@
 #include <linux/regulator/consumer.h>
 #include <linux/of_gpio.h>
 #include <linux/time.h>
+#include <linux/qpnp/vibrator.h>
 #include "gsl_ts_driver.h"
 
 #ifdef GSL_REPORT_POINT_SLOT
@@ -95,6 +96,9 @@ struct timer_list startup_timer;
 static bool timer_expired = false;
 
 static volatile int gsl_halt_flag = 0;
+
+// Vibration strength for DT2W
+#define VIBRATE_STRENGTH 25
 
 /* Proximity Sensor */
 //#define GSL_PROXIMITY_SENSOR
@@ -1823,7 +1827,10 @@ static irqreturn_t gsl_ts_isr(int irq, void *priv)
 				break;
 			case (int)'*': /* double tap */
 				if (atomic_read(&double_tap_enable))
+				{
 					key_data = KEY_WAKEUP;
+					vibrate(VIBRATE_STRENGTH);
+				}
 				break;
 			case (int)0xa1fa: /* right swipe */
 				if (atomic_read(&right_swipe_enable))
