@@ -98,7 +98,7 @@ static bool timer_expired = false;
 static volatile int gsl_halt_flag = 0;
 
 // Vibration strength for DT2W
-#define VIBRATE_STRENGTH 25
+#define VIBRATE_STRENGTH 30
 
 /* Proximity Sensor */
 //#define GSL_PROXIMITY_SENSOR
