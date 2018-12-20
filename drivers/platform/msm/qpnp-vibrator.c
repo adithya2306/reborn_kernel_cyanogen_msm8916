@@ -21,7 +21,6 @@
 #include <linux/spmi.h>
 #include <linux/qpnp/pwm.h>
 #include <linux/err.h>
-#include <linux/qpnp/vibrator.h>
 #include "../../staging/android/timed_output.h"
 
 #define QPNP_VIB_VTG_CTL(base)		(base + 0x41)

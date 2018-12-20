@@ -1829,7 +1829,7 @@ static irqreturn_t gsl_ts_isr(int irq, void *priv)
 				if (atomic_read(&double_tap_enable))
 				{
 					key_data = KEY_WAKEUP;
-					vibrate(VIBRATE_STRENGTH);
+					//vibrate(VIBRATE_STRENGTH);
 				}
 				break;
 			case (int)0xa1fa: /* right swipe */
