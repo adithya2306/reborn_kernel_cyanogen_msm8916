@@ -885,7 +885,7 @@ void msm_isp_axi_cfg_update(struct vfe_device *vfe_dev)
 {
 	int i, j;
 	uint32_t update_state;
-	unsigned long flags, flags1;
+	unsigned long flags1;
 	struct msm_vfe_axi_shared_data *axi_data = &vfe_dev->axi_data;
 	struct msm_vfe_axi_stream *stream_info;
 	for (i = 0; i < MAX_NUM_STREAM; i++) {
